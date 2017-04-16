@@ -18,7 +18,7 @@ public class TestService {
         manager.getTransaction().begin();
         Test test = new Test();
         test.setSome(some);
-        manager.persist(test);
+        manager.merge(test);
         manager.getTransaction().commit();
     }
 }
