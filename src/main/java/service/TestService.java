@@ -14,11 +14,11 @@ public class TestService {
     EntityManagerFactory factory = Persistence.createEntityManagerFactory("Tirety");
     EntityManager manager = factory.createEntityManager();
 
-    public void setTestNumber(int number) {
+    public void setTestNumber(String some) {
         manager.getTransaction().begin();
         Test test = new Test();
-        test.setSome(number);
-        manager.persist(number);
+        test.setSome(some);
+        manager.persist(test);
         manager.getTransaction().commit();
     }
 }

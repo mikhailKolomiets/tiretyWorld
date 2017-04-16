@@ -11,13 +11,13 @@ public class Test {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column
-    private int some;
+    private String some;
 
-    public int getSome() {
+    public String getSome() {
         return some;
     }
 
-    public void setSome(int some) {
+    public void setSome(String some) {
         this.some = some;
     }
 }
