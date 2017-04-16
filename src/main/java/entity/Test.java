@@ -1,12 +1,13 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by mihail on 16.04.17.
  */
 @Entity
-public class Test {
+public class Test implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
