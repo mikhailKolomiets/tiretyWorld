@@ -21,7 +21,7 @@ public class TestController extends HttpServlet{
         String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH-mm-ss"));
         try {
             TestService service = new TestService();
-            service.setTestNumber(3);
+            service.setTestNumber("3");
         } catch (Exception e) {
             time += " - "+e.getMessage();
         }
