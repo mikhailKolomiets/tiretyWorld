@@ -14,13 +14,17 @@ import java.time.format.DateTimeFormatter;
 /**
  * Created by mihail on 16.04.17.
  */
-@WebServlet (urlPatterns = "/test/*")
+@WebServlet (urlPatterns = "/test")
 public class TestController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH-mm-ss"));
         TestService service = new TestService();
-        service.setTestNumber(3);
+        try {
+            service.setTestNumber(3);
+        } catch (Exception e) {
+            time += " - "+e.getMessage();
+        }
         req.setAttribute("message", time);
         req.getRequestDispatcher("/test-page.jsp").forward(req, resp);
     }
