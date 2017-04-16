@@ -11,7 +11,7 @@
     <title>* * * test mode * * *</title>
 </head>
 <body>
-${message}
+${message}<br>
 <a href="/">Tirety</a>;
 </body>
 </html>
