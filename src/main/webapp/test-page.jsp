@@ -12,6 +12,6 @@
 </head>
 <body>
 ${message}<br>
-<a href="/">Tirety</a>;
+<a href="/">Tirety</a>
 </body>
 </html>
