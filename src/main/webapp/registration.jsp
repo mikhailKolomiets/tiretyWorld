@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-<form action="/registration">
+${message}
+<form action="/registration" method="post">
   Имя нового жителя: <input type="text" name="name"><br>
   Пароль: <input type="password" name="password"><br>
   e-mail: <input type="text" name="email"><br>
