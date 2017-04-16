@@ -19,8 +19,8 @@ public class TestController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH-mm-ss"));
-        TestService service = new TestService();
         try {
+            TestService service = new TestService();
             service.setTestNumber(3);
         } catch (Exception e) {
             time += " - "+e.getMessage();
