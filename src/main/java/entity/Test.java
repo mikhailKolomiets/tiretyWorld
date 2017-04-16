@@ -1,13 +1,15 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 /**
  * Created by mihail on 16.04.17.
  */
 @Entity
 public class Test {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     @Column
     private int some;
 
