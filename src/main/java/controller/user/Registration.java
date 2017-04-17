@@ -1,5 +1,6 @@
 package controller.user;
 
+import entity.Test;
 import entity.User;
 import util.MailSender;
 import validation.RegistrationValidation;
@@ -24,6 +25,7 @@ public class Registration extends HttpServlet {
         req.setCharacterEncoding("utf8");
         String message = "";
         User user = new User();
+        Test test = new Test();
 
         try {
             String name = req.getParameter("name");
@@ -31,7 +33,7 @@ public class Registration extends HttpServlet {
             String password = req.getParameter("password");
 
             user = new User(name, password, email);
-            req.setAttribute("user", user);
+            req.setAttribute("user", test);
             message = new RegistrationValidation().check(user);
         } catch (Throwable e) {
             message += e.getMessage();
