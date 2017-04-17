@@ -13,7 +13,7 @@ public class MailSender {
 
     final private String senderAddres = "bufixteam@gmail.com";
     final private String passwordSA = "39glnbs94v";
-    public String messageOb = "";
+    private String messageOb = "";
 
 
     public void send(String userEmail, String theme, String body) {
@@ -47,5 +47,7 @@ public class MailSender {
         }
     }
 
-
+    public String getMessageOb() {
+        return messageOb;
+    }
 }

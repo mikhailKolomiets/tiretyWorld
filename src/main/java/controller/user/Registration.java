@@ -41,8 +41,11 @@ public class Registration extends HttpServlet {
             sender.send(user.getEmail(), "Активация на тирети", "<a href=\"http://tirety-svu.rhcloud.com/registration/" +
                     code + "\">Ссылка активации</a>");
 
+            message = sender.getMessageOb();
+            if(message.length() == 0)
+                message = "На ваш email отправлена ссылка активации";
 
-            req.setAttribute("goodMessage", "На ваш email отправлена ссылка активации");
+            req.setAttribute("goodMessage", message);
             req.getRequestDispatcher("/registration.jsp").forward(req, resp);
             //todo registration
 
