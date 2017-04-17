@@ -22,6 +22,15 @@ public class RegistrationValidation implements IValidation{
             return "Имя слишком длинное";
         }
 
+        if (user.getPassword().length() < 6 || user.getPassword().length() > 50) {
+            return "Пароль от 6 до 50 символов";
+        }
+
+        String[] partEmail = user.getEmail().split("@| ");
+        if (partEmail.length != 2 || partEmail[1].split("\\.").length != 2) {
+            return "Неправильно введен адрес";
+        }
+
         return null;
     }
 }
