@@ -16,7 +16,7 @@ ${message}
 ${goodMessage}
 <form action="/registration" method="post">
   Имя нового жителя: <input type="text" value="${user.name}" name="name"><br>
-  Пароль: <input type="password" value="" name="password"><br>
+  Пароль: <input type="password" value="${user.password}" name="password"><br>
   e-mail: <input type="text" value="" name="email"><br>
   <input type="submit" value="Создать">
 
