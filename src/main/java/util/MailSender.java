@@ -41,8 +41,8 @@ public class MailSender {
             Transport.send(msg);
         } catch (MessagingException mex) {
             mex.printStackTrace();
-            //messageOb = mex.toString();
-            messageOb = "Message send error";
+            messageOb = mex.toString();
+            //messageOb = "Message send error";
 
         }
     }
