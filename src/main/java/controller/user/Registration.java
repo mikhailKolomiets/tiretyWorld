@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -30,8 +31,9 @@ public class Registration extends HttpServlet {
             String password = req.getParameter("password");
 
             user = new User(name, password, email);
+            req.setAttribute("user", user);
             message = new RegistrationValidation().check(user);
-        } catch (Exception e) {
+        } catch (Throwable e) {
             message += e.getMessage();
         }
 
