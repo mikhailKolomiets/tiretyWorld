@@ -56,7 +56,7 @@ public class Registration extends HttpServlet {
             UserMirror userMirror = new UserMirror();
             userMirror.setName(user.getName());
             req.setAttribute("message", message);
-            req.setAttribute("user", userMirror); // - server error?why
+            req.setAttribute("user", user);
             req.getRequestDispatcher("/registration.jsp").forward(req, resp);
         }
 
