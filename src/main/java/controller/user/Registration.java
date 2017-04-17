@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -25,7 +24,6 @@ public class Registration extends HttpServlet {
         req.setCharacterEncoding("utf8");
         String message = "";
         User user = new User();
-        Test test = new Test();
 
         try {
             String name = req.getParameter("name");
@@ -33,7 +31,7 @@ public class Registration extends HttpServlet {
             String password = req.getParameter("password");
 
             user = new User(name, password, email);
-            req.setAttribute("user", test);
+
             message = new RegistrationValidation().check(user);
         } catch (Throwable e) {
             message += e.getMessage();
@@ -55,8 +53,10 @@ public class Registration extends HttpServlet {
 
 
         } else {
+            UserMirror userMirror = new UserMirror();
+            userMirror.setName(user.getName());
             req.setAttribute("message", message);
-            //req.setAttribute("user", user);
+            req.setAttribute("user", userMirror); // - server error?why
             req.getRequestDispatcher("/registration.jsp").forward(req, resp);
         }
 
