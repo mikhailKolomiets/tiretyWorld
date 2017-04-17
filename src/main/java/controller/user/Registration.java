@@ -52,7 +52,7 @@ public class Registration extends HttpServlet {
 
         } else {
             req.setAttribute("message", message);
-            req.setAttribute("user", user);
+            //req.setAttribute("user", user);
             req.getRequestDispatcher("/registration.jsp").forward(req, resp);
         }
 
