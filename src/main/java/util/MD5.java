@@ -1,6 +1,5 @@
 package util;
 
-import java.math.BigInteger;
 import java.security.MessageDigest;
 
 /**
@@ -10,8 +9,16 @@ public class MD5 {
 
     public static String getMD5(String text)throws Exception{
         MessageDigest md = MessageDigest.getInstance("MD5");
-        md.digest(text.getBytes());
-        return new BigInteger(1, md.digest()).toString();
+        byte byteData[] = md.digest(text.getBytes("UTF-8"));
+
+        StringBuilder sb = new StringBuilder();
+        for (byte b : byteData){
+            sb.append(b);
+        }
+        //for (int i = 0; i < byteData.length; i++)
+            //sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+
+        return sb.toString();
     }
 
 }

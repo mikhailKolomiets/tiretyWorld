@@ -22,9 +22,13 @@ public class Registration extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if(req.getPathInfo().length() == 0)
+            resp.sendRedirect("/");
+        //todo npe
         String code = req.getPathInfo().substring(1);
         req.setAttribute("goodMessage", code);
         req.getRequestDispatcher("/registration.jsp").forward(req, resp);
+        //todo reglaststep
     }
 
     @Override
@@ -67,9 +71,6 @@ public class Registration extends HttpServlet {
 
             req.setAttribute("goodMessage", message);
             req.getRequestDispatcher("/registration.jsp").forward(req, resp);
-            //todo registration
-            //new RegitrationService().addRegistrationData();
-
 
         } else {
             UserMirror userMirror = new UserMirror();
@@ -78,9 +79,6 @@ public class Registration extends HttpServlet {
             req.setAttribute("user", user);
             req.getRequestDispatcher("/registration.jsp").forward(req, resp);
         }
-
-
-
 
     }
 }
