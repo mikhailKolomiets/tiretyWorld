@@ -51,6 +51,7 @@ public class Registration extends HttpServlet {
             entity.Registration registrationData = new entity.Registration();
             registrationData.setName(user.getName());
             try {
+                registrationData.setEmail(user.getEmail());
                 registrationData.setPassword(MD5.getMD5(user.getPassword()));
                 new RegitrationService().addRegistrationData(registrationData);
             } catch (Exception e) {

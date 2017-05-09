@@ -14,6 +14,8 @@ public class Registration {
     private String name;
     @Column
     private String password;
+    @Column
+    private String email;
 
     public long getId() {
         return id;
@@ -37,5 +39,13 @@ public class Registration {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

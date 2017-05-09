@@ -1,6 +1,7 @@
 package validation;
 
 import entity.User;
+import service.RegitrationService;
 
 import java.util.ArrayList;
 
@@ -8,6 +9,7 @@ import java.util.ArrayList;
  * Created by mihail on 16.04.17.
  */
 public class RegistrationValidation implements IValidation{
+    RegitrationService service = new RegitrationService();
 
     @Override
     public String check(Object o) {
@@ -25,6 +27,11 @@ public class RegistrationValidation implements IValidation{
         if (user.getPassword().length() < 6 || user.getPassword().length() > 50) {
             return "Пароль от 6 до 50 символов";
         }
+
+        if (service.findUserByEmail(user.getEmail()) != null){
+            return "Проверьте почту";
+        }
+
 try {
     String[] partEmail = user.getEmail().split("@| ");
     if (partEmail.length != 2 || partEmail[1].split("\\.").length != 2) {

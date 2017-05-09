@@ -18,4 +18,10 @@ public class RegitrationService {
         manager.merge(registrationData);
         manager.getTransaction().commit();
     }
+
+    public Registration findUserByEmail(String email) {
+        manager.getTransaction().begin();
+        //manager.createNativeQuery("SELECT * FROM registration WHERE email = '"+email+"'");
+        return (Registration)manager.createNativeQuery("SELECT * FROM registration WHERE email = '"+email+"'");
+    }
 }
