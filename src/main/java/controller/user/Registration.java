@@ -1,7 +1,8 @@
 package controller.user;
 
-import entity.Test;
+import service.RegitrationService;
 import entity.User;
+import util.MD5;
 import util.MailSender;
 import validation.RegistrationValidation;
 
@@ -40,16 +41,26 @@ public class Registration extends HttpServlet {
         if (message == null) {
             MailSender sender = new MailSender();
             String code = UUID.randomUUID().toString();
-            sender.send(user.getEmail(), "Активация на тирети", "<a href=\"http://tirety-svu.rhcloud.com/registration/" +
-                    code + "\">Ссылка активации</a>");
+            sender.send(user.getEmail(), "Активация на тирети", "http://tirety-svu.rhcloud.com/registration/" +
+                    code + " <- Ссылка активации");
 
             message = sender.getMessageOb();
             if(message.length() == 0)
                 message = "На ваш email отправлена ссылка активации";
 
+            entity.Registration registrationData = new entity.Registration();
+            registrationData.setName(user.getName());
+            try {
+                registrationData.setPassword(MD5.getMD5(user.getPassword()));
+                new RegitrationService().addRegistrationData(registrationData);
+            } catch (Exception e) {
+                message = e.getMessage();
+            }
+
             req.setAttribute("goodMessage", message);
             req.getRequestDispatcher("/registration.jsp").forward(req, resp);
             //todo registration
+            //new RegitrationService().addRegistrationData();
 
 
         } else {
@@ -59,6 +70,8 @@ public class Registration extends HttpServlet {
             req.setAttribute("user", user);
             req.getRequestDispatcher("/registration.jsp").forward(req, resp);
         }
+
+
 
 
     }

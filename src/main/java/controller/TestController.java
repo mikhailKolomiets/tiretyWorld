@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * Created by mihail on 16.04.17.
  */
-@WebServlet (urlPatterns = "/test")
+@WebServlet (urlPatterns = {"/test", "/test2"})
 public class TestController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

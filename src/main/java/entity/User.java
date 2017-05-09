@@ -2,6 +2,8 @@ package entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 
 /**
  * Created by mihail on 16.04.17.
@@ -63,4 +65,5 @@ public class User implements Serializable{
     public User() {
 
     }
+
 }
