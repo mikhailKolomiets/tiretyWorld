@@ -17,8 +17,15 @@ import java.util.UUID;
 /**
  * Created by mihail on 16.04.17.
  */
-@WebServlet(urlPatterns = "/registration")
+@WebServlet(urlPatterns = "/registration/*")
 public class Registration extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String code = req.getPathInfo().substring(1);
+        req.setAttribute("goodMessage", code);
+        req.getRequestDispatcher("/registration.jsp").forward(req, resp);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,7 +49,7 @@ public class Registration extends HttpServlet {
             MailSender sender = new MailSender();
             String code = UUID.randomUUID().toString();
             sender.send(user.getEmail(), "Активация на тирети", "http://tirety-svu.rhcloud.com/registration/" +
-                    code + " <- Ссылка активации");
+                    code + " <- Ссылка активации\nИмя: " + user.getName() + "\nПароль: " + user.getPassword());
 
             message = sender.getMessageOb();
             if(message.length() == 0)
