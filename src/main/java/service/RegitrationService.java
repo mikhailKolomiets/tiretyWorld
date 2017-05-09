@@ -21,6 +21,6 @@ public class RegitrationService {
 
     public Registration findUserByEmail(String email){
         manager.getTransaction().begin();
-        return manager.createQuery("SELECT * from Registration a where a.email='" + email + "'", Registration.class).getSingleResult();
+        return manager.createQuery("SELECT a from entity.Registration a where a.email='" + email + "'", Registration.class).getSingleResult();
     }
 }
