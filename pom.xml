@@ -33,6 +33,7 @@
             <artifactId>mail</artifactId>
             <version>1.4</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
