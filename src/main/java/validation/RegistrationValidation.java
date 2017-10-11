@@ -1,15 +1,13 @@
 package validation;
 
 import entity.User;
-import service.RegitrationService;
-
-import java.util.ArrayList;
+import service.RegistrationService;
 
 /**
  * Created by mihail on 16.04.17.
  */
 public class RegistrationValidation implements IValidation{
-    RegitrationService service = new RegitrationService();
+    RegistrationService service = new RegistrationService();
 
     @Override
     public String check(Object o) {

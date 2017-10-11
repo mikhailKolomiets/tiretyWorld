@@ -205,7 +205,7 @@
 </style>
 
 </head>
-<body>
+<body ng-app ng-init="logView='false'">
 
  <section class='container'>
           <hgroup>
@@ -218,7 +218,13 @@
      <form action="">
 
      </form>
-     <a href="registration.jsp">Создать нового жителя</a>
+     <a href="registration.jsp">Создать нового жителя</a><br>
+     <a ng-show="logView=='false'"><button ng-click="logView='true'">Войти</button></a ng-show="logView=='false'"><br>
+     <form ng-show="logView == 'true'" action="" method="post">
+       Имя: <input type="text" name="name"><br>
+       Пароль: <input type="password" name="pass"><br>
+       <input type="submit" value="Войти">
+     </form>
    </div>
 
 
@@ -306,6 +312,6 @@ git pull -s recursive -X theirs upstream master</pre>
         </footer>
 </section>
 
-
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </body>
 </html>
