@@ -1,9 +1,11 @@
 package controller.user;
 
-import service.RegitrationService;
+import service.RegistrationService;
 import entity.User;
+import service.UserService;
 import util.MD5;
 import util.MailSender;
+import util.Variable;
 import validation.RegistrationValidation;
 
 import javax.servlet.ServletException;
@@ -22,13 +24,31 @@ public class Registration extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(req.getPathInfo().length() == 0)
+
+
+        try {
+            String code = req.getPathInfo().substring(1);
+
+            RegistrationService service = new RegistrationService();
+            entity.Registration registrationData = service.findRDByCode(code);
+
+            if(registrationData == null) {
+                req.setAttribute("message", "Житель уже регистрировался по данной ссылке");
+            } else {
+                UserService userService = new UserService();
+                User user = userService.createUser(registrationData);
+                service.deleteRD(registrationData);
+
+                req.setAttribute("user", user);
+
+                resp.sendRedirect("/world.html");
+
+            }
+
+        } catch (Exception r) {
             resp.sendRedirect("/");
-        //todo npe
-        String code = req.getPathInfo().substring(1);
-        req.setAttribute("goodMessage", code);
-        req.getRequestDispatcher("/registration.jsp").forward(req, resp);
-        //todo reglaststep
+        }
+
     }
 
     @Override
@@ -52,7 +72,7 @@ public class Registration extends HttpServlet {
         if (message == null) {
             MailSender sender = new MailSender();
             String code = UUID.randomUUID().toString();
-            sender.send(user.getEmail(), "Активация на тирети", "http://tirety-svu.rhcloud.com/registration/" +
+            sender.send(user.getEmail(), "Активация на тирети", "http://" + Variable.LOCALHOST + "/registration/" +
                     code + " <- Ссылка активации\nИмя: " + user.getName() + "\nПароль: " + user.getPassword());
 
             message = sender.getMessageOb();
@@ -64,7 +84,8 @@ public class Registration extends HttpServlet {
             try {
                 registrationData.setEmail(user.getEmail());
                 registrationData.setPassword(MD5.getMD5(user.getPassword()));
-                new RegitrationService().addRegistrationData(registrationData);
+                registrationData.setCode(code);
+                new RegistrationService().addRegistrationData(registrationData);
             } catch (Exception e) {
                 message = e.getMessage();
             }

@@ -205,7 +205,7 @@
 </style>
 
 </head>
-<body>
+<body ng-app="tirety" ng-init="logView='false'">
 
  <section class='container'>
           <hgroup>
@@ -215,10 +215,17 @@
    <h3>Сервер запущен 16.04 в 17:00</h3>
 
    <div>
-     <form action="">
 
+     <a href="registration.jsp">Создать нового жителя</a><br>
+
+     <div ng-controller="getMessage">{{message}}</div>
+     <a ng-show="logView=='false'"><button ng-click="logView='true'">Войти</button></a ng-show="logView=='false'"><br>
+
+     <form ng-show="logView == 'true'" action="/login" method="post">
+       Имя: <input type="text" name="name"><br>
+       Пароль: <input type="password" name="pass"><br>
+       <input type="submit" value="Войти">
      </form>
-     <a href="registration.jsp">Создать нового жителя</a>
    </div>
 
 
@@ -306,6 +313,7 @@ git pull -s recursive -X theirs upstream master</pre>
         </footer>
 </section>
 
-
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+ <script src="js/angular.js"></script>
 </body>
 </html>
