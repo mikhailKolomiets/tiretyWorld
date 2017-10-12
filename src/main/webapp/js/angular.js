@@ -12,3 +12,10 @@ app.controller('checklog', function($scope, $http) {
                 document.location.href = "/";
         });
 });
+
+app.controller('getMessage', function($scope, $http) {
+    $http.get("/get-message")
+        .then(function(response) {
+            $scope.message = response.data;
+        });
+});
