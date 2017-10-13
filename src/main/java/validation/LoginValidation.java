@@ -11,13 +11,20 @@ public class LoginValidation implements IValidation {
     @Override
     public String check(Object o) throws ClassCastException {
 
-        //return "test message";
         User user = (User) o;
 
+        if (user.getEmail().length() == 0) {
+            return "Введите пожалуйста имя или email";
+        }
+
+        if (user.getPassword().length() == 0) {
+            return "Введите пароль.";
+        }
+
         UserService service = new UserService();
-        System.out.println(user.getName() + " for LV1");//todo FT
+
         User userFromBase = service.findUserByEmail(user.getEmail());
-        System.out.println("lv 4");//todo FT
+
         if (userFromBase == null)
             userFromBase = service.findUserByName(user.getName());
 
