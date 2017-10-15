@@ -16,6 +16,8 @@ public class Map {
     private String name;
     @Column
     private String type;
+    @Column
+    private int secondGo;
 
     public long getId() {
         return id;
@@ -47,5 +49,13 @@ public class Map {
 
     public String getType() {
         return type;
+    }
+
+    public int getSecondGo() {
+        return secondGo;
+    }
+
+    public void setSecondGo(int secondGo) {
+        this.secondGo = secondGo;
     }
 }

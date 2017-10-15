@@ -32,12 +32,16 @@ public class Registration extends HttpServlet {
             RegistrationService service = new RegistrationService();
             entity.Registration registrationData = service.findRDByCode(code);
 
-            if(registrationData == null) {
+            if (registrationData == null) {
                 req.setAttribute("message", "Житель уже регистрировался по данной ссылке");
             } else {
                 UserService userService = new UserService();
                 User user = userService.createUser(registrationData);
                 service.deleteRD(registrationData);
+
+                user.setPositionToGo(1000100);
+                user.setPosition(1000100);
+                userService.updateUser(user);
 
                 req.setAttribute("user", user);
 
@@ -76,7 +80,7 @@ public class Registration extends HttpServlet {
                     code + " <- Ссылка активации\nИмя: " + user.getName() + "\nПароль: " + user.getPassword());
 
             message = sender.getMessageOb();
-            if(message.length() == 0)
+            if (message.length() == 0)
                 message = "На ваш email отправлена ссылка активации";
 
             entity.Registration registrationData = new entity.Registration();

@@ -64,8 +64,14 @@ public class UserService {
             e.printStackTrace();
         }
         manager.getTransaction().commit();
-        if (user == null)
-            return null;
+        return user;
+    }
+
+    public User updateUser(User user) {
+
+        manager.getTransaction().begin();
+        user = manager.merge(user);
+        manager.getTransaction().commit();
         return user;
     }
 }
