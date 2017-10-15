@@ -32,7 +32,7 @@ public class UserService {
     }
 
     public User findUserByEmail(String email) {
-        User user = new User();
+        User user;
         manager.getTransaction().begin();
         Session session = (Session) manager.getDelegate();
         Criteria criteria = session.createCriteria(User.class);
@@ -43,9 +43,10 @@ public class UserService {
 
         } catch (HibernateException e) {
             e.printStackTrace();
+            return null;
         }
         manager.getTransaction().commit();
-        if(user == null)
+        if (user == null)
             return null;
         return user;
     }
@@ -63,8 +64,14 @@ public class UserService {
             e.printStackTrace();
         }
         manager.getTransaction().commit();
-        if(user == null)
-            return null;
+        return user;
+    }
+
+    public User updateUser(User user) {
+
+        manager.getTransaction().begin();
+        user = manager.merge(user);
+        manager.getTransaction().commit();
         return user;
     }
 }
