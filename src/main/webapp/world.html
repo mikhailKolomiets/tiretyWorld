@@ -26,7 +26,9 @@
         <a href="go-to/{{user.positionToGo}}">Обновить</a>
     </div>
     <div ng-if="user.position == 1000100 && user.positionToGo == 1000100">
-        {{user.name}} в поселении
+        {{user.name}} в поселении<br>
+        здания:<br>
+        <a href="locations/bank.html">Банк</a>
     </div>
     <div ng-if="user.position == 950095 && user.positionToGo == 950095">
         <div ng-include="'locations/cropland.htm'"></div>

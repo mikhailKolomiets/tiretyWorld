@@ -51,7 +51,7 @@ public class Landing extends HttpServlet {
 
                 int qtPresent = userbeg.getItems().get(culture.getName());
 
-                if (qtPresent > 1) {
+                if (qtPresent > 0) {
                     TreeMap<String, Integer> usersCulture = userbeg.getItems();
                     qtPresent--;
                     usersCulture.put(culture.getName(), qtPresent);
