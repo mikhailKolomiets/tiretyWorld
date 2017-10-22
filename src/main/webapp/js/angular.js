@@ -47,4 +47,9 @@ app.controller('getAllCroplands', function ($scope, $http) {
         });
 });
 
-
+app.controller('getBanking', function ($scope, $http) {
+    $http.get("/get-banking")
+        .then(function (response) {
+            $scope.bank = response.data;
+        });
+});

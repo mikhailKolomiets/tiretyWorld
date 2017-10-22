@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TIRETY БАНК</title>
+</head>
+<body ng-app="tirety">
+<h2>БАНК</h2>
+<a href="../world.html">Назад в город</a>
+<br> <br>
+
+<div ng-controller="checklog">
+    <div ng-controller="getBanking">
+        В банке : {{bank.money}} тирок и {{bank.realMoney}} гривень.<br>
+        Текущий курс 1 гр = {{bank.course}} тир.
+
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="../js/angular.js"></script>
+
+</body>
+</html>

@@ -31,6 +31,9 @@ public class User implements Serializable {
     @Column
     private String wentTime;
 
+    @Column
+    private int money;
+
     public String getName() {
         return name;
     }
@@ -85,6 +88,14 @@ public class User implements Serializable {
 
     public void setWentTime(String wentTime) {
         this.wentTime = wentTime;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public User(String name, String password, String email) {
