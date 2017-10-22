@@ -7,7 +7,8 @@
 <body ng-app="tirety">
 <div ng-controller="checklog">Привет {{user.name}}
     <div>
-        <button onclick="location.href='/logout'">выход</button>
+        <button onclick="location.href='/logout'">Выход</button>
+        <button onclick="location.href='/world.html'">Обновить</button>
     </div>
 
     <div ng-controller="userGo">
@@ -28,7 +29,8 @@
         {{user.name}} в поселении
     </div>
     <div ng-if="user.position == 950095 && user.positionToGo == 950095">
-        {{user.name}} на полях
+        <div ng-include="'locations/cropland.htm'"></div>
+
     </div>
 
 </div>

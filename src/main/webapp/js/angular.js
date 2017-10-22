@@ -30,3 +30,21 @@ app.controller('userGo', function ($scope, $http) {
             });
     }
 });
+
+app.controller('getUserbeg', function ($scope, $http) {
+    $http.get("/get-userbeg")
+        .then(function (response) {
+            var json = $scope.userbeg = response.data;
+
+            $scope.crop = json["Пшеница"];
+        });
+});
+
+app.controller('getAllCroplands', function ($scope, $http) {
+    $http.get("/get-all-croplands")
+        .then(function (response) {
+            $scope.croplands = response.data;
+        });
+});
+
+
