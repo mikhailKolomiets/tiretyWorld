@@ -26,13 +26,13 @@ public class RegistrationService {
 
     }
 
-    public Registration findUserByEmail(String email){//todo find from exist user email
+    public Registration findUserByEmail(String email) {
         manager.getTransaction().begin();
         Registration registrationData = null;
         try {
             registrationData = manager.createQuery("SELECT a from entity.Registration a where a.email='" + email + "'",
                     Registration.class).getSingleResult();
-        }catch (Exception e) {
+        } catch (Exception e) {
 
         }
         return registrationData;
