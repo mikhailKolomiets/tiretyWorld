@@ -35,7 +35,7 @@ public class CroplandService {
     public Cropland getCroplandById(long id) {
 
         manager.getTransaction().begin();
-        Cropland cropland = manager.find(Cropland.class, id);
+         Cropland cropland = manager.find(Cropland.class, id);
         manager.getTransaction().commit();
 
         return cropland;
