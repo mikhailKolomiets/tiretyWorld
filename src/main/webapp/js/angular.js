@@ -53,3 +53,10 @@ app.controller('getBanking', function ($scope, $http) {
             $scope.bank = response.data;
         });
 });
+
+app.controller('counter', function ($scope, $http) {
+    $http.get("/counter")
+        .then(function (response) {
+            $scope.count = response.data;
+        });
+});
