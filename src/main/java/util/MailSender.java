@@ -31,15 +31,15 @@ public class MailSender {
 
         try {
             Message msg = new MimeMessage(session);
-            msg.setContent(theme, "text/plain; charset=UTF-8");
-            msg.setContent(body, "text/plain; charset=UTF-8");
-            System.out.println(theme + " <----------------- maybe else");
+            
             msg.setFrom(new InternetAddress(senderAddres));
             InternetAddress[] address = {new InternetAddress(userEmail)};
             msg.setRecipients(Message.RecipientType.TO, address);
-            msg.setSubject(theme);
+            msg.setSubject(theme, "UTF-8");
             msg.setSentDate(new Date());
-            msg.setText(body);
+            msg.setText(body, "");
+            
+            System.out.println(msg.getSubject + " <----------------- maybe else");
 
             Transport.send(msg);
         } catch (MessagingException mex) {
