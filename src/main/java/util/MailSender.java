@@ -31,6 +31,7 @@ public class MailSender {
 
         try {
             Message msg = new MimeMessage(session);
+            msg.setContent(message, "text/plain; charset=UTF-8");
             msg.setFrom(new InternetAddress(senderAddres));
             InternetAddress[] address = {new InternetAddress(userEmail)};
             msg.setRecipients(Message.RecipientType.TO, address);
