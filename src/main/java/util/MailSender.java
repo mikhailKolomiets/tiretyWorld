@@ -42,7 +42,7 @@ public class MailSender {
             msg.setSentDate(new Date());
             msg.setText(body);
             
-            System.out.println(msg.getSubject + " <----------------- maybe else");
+            System.out.println(theme + " <----------------- maybe else");
 
             Transport.send(msg);
         } catch (Exception mex) {
