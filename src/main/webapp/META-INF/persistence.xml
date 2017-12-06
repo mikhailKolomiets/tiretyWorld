@@ -8,6 +8,7 @@
     <persistence-unit name="Tirety" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
+        <class>entity.locations.Cropland</class>
         <class>entity.Test</class>
         <class>entity.User</class>
         <class>entity.Registration</class>
