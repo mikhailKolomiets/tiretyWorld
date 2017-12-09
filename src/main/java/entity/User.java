@@ -32,6 +32,50 @@ public class User implements Serializable {
     private String wentTime;
 
     @Column
+    private String registrationTime;
+
+    @Column
+    private String health;
+
+    @Column
+    private String tire;
+
+    @Column
+    private String hunger;
+
+    public String getHealth() {
+        return health;
+    }
+
+    public void setHealth(String health) {
+        this.health = health;
+    }
+
+    public String getHunger() {
+        return hunger;
+    }
+
+    public void setHunger(String hunger) {
+        this.hunger = hunger;
+    }
+
+    public String getTire() {
+        return tire;
+    }
+
+    public void setTire(String tire) {
+        this.tire = tire;
+    }
+
+    public String getRegistrationTime() {
+        return registrationTime;
+    }
+
+    public void setRegistrationTime(String registrationTime) {
+        this.registrationTime = registrationTime;
+    }
+
+    @Column
     private int money;
 
     public String getName() {

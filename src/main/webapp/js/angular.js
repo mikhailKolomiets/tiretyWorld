@@ -54,6 +54,13 @@ app.controller('getBanking', function ($scope, $http) {
         });
 });
 
+app.controller('gameTime', function ($scope, $http) {
+    $http.get("/getGameTime")
+        .then(function (response) {
+            $scope.time = response.data;
+        });
+});
+
 app.controller('counter', function ($scope, $http) {
     $http.get("/counter")
         .then(function (response) {

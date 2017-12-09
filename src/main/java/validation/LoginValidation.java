@@ -2,7 +2,9 @@ package validation;
 
 import entity.User;
 import service.UserService;
+import util.GameTimeUtil;
 import util.MD5;
+import util.Variable;
 
 /**
  * Created by mihail on 11.10.17.
@@ -37,6 +39,18 @@ public class LoginValidation implements IValidation {
             }
         } catch (Exception e) {
             return e.getMessage();
+        }
+
+        if (userFromBase.getHealth() == null) {
+            String gameTimeAtNow = GameTimeUtil.createGameTimeFromLDT(Variable.STARTTIME).toString();
+
+            userFromBase.setRegistrationTime(gameTimeAtNow);
+            userFromBase.setHealth(gameTimeAtNow);
+            userFromBase.setTire(gameTimeAtNow);
+            userFromBase.setHunger(gameTimeAtNow);
+
+            service.updateUser(userFromBase);
+            return "Обновились новые данные ... перезайдите";
         }
 
         return null;
