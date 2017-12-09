@@ -3,6 +3,7 @@ package controller.user;
 import service.RegistrationService;
 import entity.User;
 import service.UserService;
+import util.GameTimeUtil;
 import util.MD5;
 import util.MailSender;
 import util.Variable;
@@ -41,7 +42,14 @@ public class Registration extends HttpServlet {
 
                 user.setPositionToGo(1000100);
                 user.setPosition(1000100);
-                userService.updateUser(user);
+
+                String timeAtNow = GameTimeUtil.createGameTimeFromLDT(Variable.STARTTIME).toString();
+                user.setHealth(timeAtNow);
+                user.setHunger(timeAtNow);
+                user.setTire(timeAtNow);
+                user.setRegistrationTime(timeAtNow);
+
+                user = userService.updateUser(user);// TODO need test!!
 
                 req.setAttribute("user", user);
 
