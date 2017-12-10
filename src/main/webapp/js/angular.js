@@ -21,12 +21,12 @@ app.controller('getMessage', function ($scope, $http) {
 });
 
 app.controller('userGo', function ($scope, $http) {
-    $scope.locations = 'iii';
+
     $scope.refrash = function () {
         $http.get("/get-locations")
             .then(function (response) {
                 $scope.locations = response.data;
-                $scope.any = 444;
+
             });
     }
 });
@@ -58,6 +58,13 @@ app.controller('gameTime', function ($scope, $http) {
     $http.get("/getGameTime")
         .then(function (response) {
             $scope.time = response.data;
+
+            $scope.sDate = Date.parse(response.data.gameTime);
+            var gameDate = new Date($scope.sDate);
+
+            $scope.mesDate = (gameDate.getFullYear()) + " г " + (gameDate.getMonth() + 1) + " м " + gameDate.getDate() +
+                " д";
+
         });
 });
 
