@@ -1,0 +1,107 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+ul{
+	list-style-type: none;
+}
+body{
+	font-family: 'Berkshire Swash', cursive;
+	font-size: 16px;
+	color: #fbec77;
+	background-color: #B06836;
+}
+header{
+	width: 100%;
+	height: 80px;
+	background: url(../image/bgi-header.png) 5% 50% no-repeat, #551202 url(../image/bgi-header.png) 95% 50% no-repeat;
+	background-size: 25% 80%;
+	text-align: center;
+	font-size: 24px;
+	border-bottom: 3px solid #0e2514;
+}
+header h1{
+	color: #ffd489;
+	font-size: 46px;
+	text-shadow: 1px -1px 1px #0e2514, 2px -3px 7px #0e2514, -2px -3px 7px #0e2514, 6px 5px 2px #deb20c, -2px 7px 5px #deb20c, -30px 3px 25px #deb20c;
+	letter-spacing: 4px;
+	word-spacing: 15px;
+	padding-top: 8px;
+}
+main{
+	height: 600px;
+	width: 100%;
+	background-color: #B06836;
+}
+font-family: 'Underdog', cursive; - шрифт для кирилицы
+.clearfix{
+	width: 100%;
+	content: "";
+ 	display: table; 
+ 	clear: both;
+ }
+ .gamer-hidden{
+	display: none;
+	float: left;
+	width: 70px;
+	height: 200px;
+	color: #0e2514;
+	text-align: center;
+	background: #ffefc9 url(../image/bg-gamer.png) 50% 50% no-repeat;
+	border: 2px solid #304e38;
+	margin-top: 50px;
+ }
+.gamer-hidden .mini-avatar{
+	text-align: center;
+	height: 35%;
+	font-size: 32px;
+	padding-top: 5px;
+}
+.gamer-hidden .mini-avatar img{
+	height: 50px;
+	border: 1px solid #0e2514;
+}
+.gamer{
+	float: left;
+	width: 250px;
+	height: 350px;
+	color: #0e2514;
+	background: #ffefc9 url(../image/bg-gamer.png) 50% 50% no-repeat;
+	background-size: 130% 110%;
+	border: 7px outset #304e38;
+	margin-top: 50px;
+}
+.gamer .avatar{
+	text-align: center;
+	height: 45%;
+	font-size: 32px;
+	padding: 15px;
+}
+.gamer .avatar img{
+	height: 130px;
+	border: 1px solid #0e2514;
+	box-shadow: 0.3px 7px 15px #0e2514, -1px 1px 5px #0e2514, 1px 1px 5px #0e2514;
+}
+.gamers-points{
+	width: 100%;
+	text-align: left;
+	font-size: 18px;
+	line-height: 1.8;
+}
+.gamers-points table{
+	table-layout: fixed;
+	width: 80%;
+	border: none;
+	margin: 0 auto;
+}
+.gamers-points .feature{
+	width: 65%;
+	text-align: left;
+}
+.gamers-points .colon{
+	width: 2%;
+}
+.gamers-points .total{
+	width: 32%;
+	text-align: right;
+}
