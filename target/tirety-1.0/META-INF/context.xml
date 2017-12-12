@@ -1,0 +1,12 @@
+<Context path="/"
+         antiResourceLocking="false" >
+<Resource name="jdbc/tirety" auth="Container"
+          type="javax.sql.DataSource" maxActive="100"
+          maxIdle="30" maxWait="10000"
+          username="adminlEfhAbQ"
+          password="43XTHJzCQ-mp"
+          driverClassName="com.mysql.jdbc.Driver"
+          url="jdbc:mysql://127.3.119.130:3306/tirety"
+          connectionProperties="useUnicode=yes;characterEncoding=utf8"
+        />
+</Context>
