@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мир тирети</title>
+</head>
+<body ng-app="tirety">
+<div ng-controller="checklog">Привет {{user.name}}
+    <div>
+        <button onclick="location.href='/logout'">Выход</button>
+        <button onclick="location.href='/world.html'">Обновить</button>
+    </div>
+
+    <div ng-controller="userGo">
+        <button ng-click="refrash()">Список локаций возле вас</button>
+        <table>
+            <tr ng-repeat="location in locations">
+                <td>{{location.name}}</td>
+                <td>идти {{location.secondGo}}</td>
+                <td><a href="go-to/{{location.position}}"> Идти </a></td>
+            </tr>
+        </table>
+    </div>
+    <div ng-if="user.positionToGo != user.position">
+        {{user.name}} в пути
+        <a href="go-to/{{user.positionToGo}}">Обновить</a>
+    </div>
+    <div ng-if="user.position == 1000100 && user.positionToGo == 1000100">
+        {{user.name}} в поселении<br>
+        здания:<br>
+        <a href="locations/bank.html">Банк</a>
+    </div>
+    <div ng-if="user.position == 950095 && user.positionToGo == 950095">
+        <div ng-include="'locations/cropland.htm'"></div>
+
+    </div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/angular.js"></script>
+</body>
+</html>
