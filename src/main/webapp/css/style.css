@@ -117,6 +117,7 @@ font-family: 'Underdog', cursive; - шрифт для кирилицы
 }
 .gamer{/*
 	display: none;*/
+
 	float: left;
 	width: 250px;
 	height: 350px;

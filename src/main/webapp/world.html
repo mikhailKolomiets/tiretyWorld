@@ -2,10 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Мир тирети</title>
+    <link href="./css/reset.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Underdog" rel="stylesheet" type="text/css">
 </head>
 <body ng-app="tirety">
 <div ng-controller="checklog">Привет {{user.name}}
+    <header>
+        <h1>Tirety world</h1>
+    </header>
+    <div class="wrapper gameplayer clearfix">
+        <div class="gamer-hidden">
+            <div class="mini-avatar">
+                <img id="mini-avatar" src="image/mini-avatar.png" alt="mini-hero">
+            </div>
+            <ul>
+                <li>Nick</li>
+                <li>29</li>
+                <li>100</li>
+                <li>100500</li>
+            </ul>
+        </div>
+        <div class="gamer">
+            <div class="avatar">
+                <img id="avatar" src="image/avatar.png" alt="hero">
+            </div> <!-- можно добавить кнопку для открытия характеристик персонажа -->
+            <div class="gamers-points"> <!-- параметры персонажа -->
+                <table> <!-- будут вводиться данные через java; the table is needed for changes-->
+                    <tr>
+                        <td class="feature">gamer-name</td>
+                        <td class="colon">:</td>
+                        <td class="total">Nick</td>
+                    </tr>
+                    <tr>
+                        <td class="feature">gamer-age</td>
+                        <td class="colon">:</td>
+                        <td class="total">29</td>
+                    </tr>
+                    <tr>
+                        <td class="feature">gamer-money</td>
+                        <td class="colon">:</td>
+                        <td class="total">100</td>
+                    </tr>
+                    <tr>
+                        <td class="feature">gamer-resources</td>
+                        <td class="colon">:</td>
+                        <td class="total">100500</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <div>
         <button onclick="location.href='/logout'">Выход</button>
         <button onclick="location.href='/world.html'">Обновить</button>
