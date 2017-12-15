@@ -22,7 +22,7 @@
     Имя нового жителя: <input type="text" value="${user.name}" name="name"><br>
     Пароль: <input type="password" value="${user.password}" name="password"><br>
     e-mail: <input type="text" value="${user.email}" name="email"><br>
-    <input type="submit" value="Создать">
+    <input type="submit" style="color: chocolate" value="Создать">
 
     <footer class="coText">
         <div><a href="/">tirety 2017</a></div>

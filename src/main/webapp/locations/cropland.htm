@@ -1,4 +1,3 @@
-<h2> ПОЛЯ </h2> <br>
 <a href="add-cropland">Создать грядку</a>
 
 <div ng-controller="getUserbeg">
@@ -8,19 +7,18 @@
             <tr ng-repeat="cropland in croplands">
                 <td>
                     <a ng-show="cropland.userId == 0"> Пустая грядка</a>
-                    <h4 ng-show="cropland.userId == user.id"> Растет {{cropland.itemName}}
-                        созреет {{cropland.timeDown}} | <a href="harvest/{{cropland.id}}">Собрать</a></h4>
-                </td>
-
-                <td ng-show="cropland.userId == 0 && userbeg['Пшеница'] > 0">
-                    <a href="landing/02{{cropland.id}}">
+                    <a ng-show="cropland.userId == user.id"> Растет {{cropland.itemName}}
+                        созреет {{cropland.timeDown}}</a>
+                    <a ng-show="cropland.userId == 0 && userbeg['Пшеница'] > 0"
+                       href="landing/02{{cropland.id}}">
                         Посадить пшеницу({{userbeg["Пшеница"]}} в наличии)</a>
                 </td>
-                <td ng-show="cropland.userId == 0 && userbeg['Арбуз'] > 0">
-                    <a href="landing/01{{cropland.id}}">
+                <td>
+                    <a ng-show="cropland.userId == 0 && userbeg['Арбуз'] > 0"
+                       href="landing/01{{cropland.id}}">
                         Посадить арбуз({{userbeg["Арбуз"]}} в наличии)</a>
+                    <a ng-show="cropland.userId == user.id" href="harvest/{{cropland.id}}">Собрать</a>
                 </td>
-
             </tr>
 
         </table>
