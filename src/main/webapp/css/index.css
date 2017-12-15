@@ -1,0 +1,35 @@
+body {
+
+    font-family: 'Underdog', cursive;
+    font-size: 16px;
+    color: #fbec77;
+    background: #B06836 url("../images/bg-gamer.jpg") no-repeat;
+    background-size: cover;
+
+}
+
+.coText {
+    position: absolute;
+    bottom: 2%;
+    left: 45%;
+}
+
+.infoMessage {
+    text-align: center;
+    color: brown;
+}
+
+.loginForm {
+    text-align: center;
+    padding-top: 8%;
+}
+
+.serverTime {
+    position: absolute;
+    top: 0;
+    right: 2%;
+}
+
+.welcomeText {
+    text-align: center;
+}
