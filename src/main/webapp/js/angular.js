@@ -7,9 +7,30 @@ var app = angular.module('tirety', []);
 app.controller('checklog', function ($scope, $http) {
     $http.get("/checklog")
         .then(function (response) {
-            $scope.user = response.data;
+            user = $scope.user = response.data;
+            $scope.refr = "/world.html";
             if ($scope.user === null)
                 document.location.href = "/";
+            if (user.position == 950095 && user.positionToGo == 950095) {
+                $scope.place = "Поля";
+            }
+            if (user.position == 1000100 && user.positionToGo == 1000100) {
+                $scope.place = "Поселение";
+            }
+            if (user.positionToGo != user.position) {
+                $scope.place = "В пути";
+                $scope.refr = "go-to/user.positionToGo"
+            }
+            if (user.position == 950093 && user.positionToGo == 950093) {
+                $scope.place = "Лес";
+            }
+            if (false) {
+                $scope.place = "Поля";
+            }
+            if (false) {
+                $scope.place = "Поля";
+            }
+
         });
 });
 
@@ -58,6 +79,13 @@ app.controller('gameTime', function ($scope, $http) {
     $http.get("/getGameTime")
         .then(function (response) {
             $scope.time = response.data;
+
+            $scope.sDate = Date.parse(response.data.gameTime);
+            var gameDate = new Date($scope.sDate);
+
+            $scope.mesDate = (gameDate.getFullYear()) + " г " + (gameDate.getMonth() + 1) + " м " + gameDate.getDate() +
+                " д";
+
         });
 });
 
