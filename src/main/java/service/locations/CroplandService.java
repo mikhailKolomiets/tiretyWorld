@@ -1,12 +1,14 @@
 package service.locations;
 
 import entity.locations.Cropland;
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceUtil;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,10 +34,35 @@ public class CroplandService {
         return croplandsList;
     }
 
+    public Cropland getCroplandByIdAndCoordinate(Cropland cropland) {
+
+        manager.getTransaction().begin();
+
+        Session session = (Session) manager.getDelegate();
+        Criteria criteria = session.createCriteria(Cropland.class);
+        criteria.add(Restrictions.eq("position", cropland.getPosition()));
+        criteria.add(Restrictions.eq("userId", cropland.getUserId()));
+
+        Cropland croplandFromBase = new Cropland();
+
+        try {
+            croplandFromBase = (Cropland) criteria.uniqueResult();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+
+        manager.getTransaction().commit();
+
+        if (croplandFromBase == null)
+            return cropland;
+        else
+            return croplandFromBase;
+    }
+
     public Cropland getCroplandById(long id) {
 
         manager.getTransaction().begin();
-         Cropland cropland = manager.find(Cropland.class, id);
+        Cropland cropland = manager.find(Cropland.class, id);
         manager.getTransaction().commit();
 
         return cropland;
@@ -49,4 +76,4 @@ public class CroplandService {
         manager.getTransaction().commit();
 
     }
- }
+}
