@@ -24,14 +24,28 @@ app.controller('checklog', function ($scope, $http) {
             if (user.position == 950093 && user.positionToGo == 950093) {
                 $scope.place = "Лес";
             }
-            if (false) {
-                $scope.place = "Поля";
+            if (user.position == 1040102 && user.positionToGo == 1040102) {
+                $scope.place = "Горы";
             }
             if (false) {
                 $scope.place = "Поля";
             }
 
         });
+});
+
+app.controller('getIronResource', function ($scope, $http) {
+    $http.get("/getOre")
+        .then(function (response) {
+            $scope.resource = response.data;
+        });
+    $scope.mining = function () {
+        $http.get("/mineIronOre")
+            .then(function (response) {
+                $scope.message = response.data.harvMessage;
+            });
+
+    }
 });
 
 app.controller('getMessage', function ($scope, $http) {
@@ -86,6 +100,8 @@ app.controller('gameTime', function ($scope, $http) {
             $scope.mesDate = (gameDate.getFullYear()) + " г " + (gameDate.getMonth() + 1) + " м " + gameDate.getDate() +
                 " д";
 
+            $scope.timeH = gameDate.getHours();
+            $scope.timeM = gameDate.getMinutes();
         });
 });
 

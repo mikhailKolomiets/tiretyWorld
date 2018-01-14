@@ -82,6 +82,12 @@
         <div ng-include="'/лес'"></div>
 
     </div>
+    <div ng-controller="getIronResource" ng-if="user.position == 1040102 && user.positionToGo == 1040102">
+        <div ng-include="'locations/iron-mid.htm'" class="location-content"></div>
+    </div>
+    <div ng-controller="gameTime">
+        {{timeH}} : {{timeM}}
+    </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="js/angular.js"></script>
