@@ -31,8 +31,6 @@ public class MailSender {
 
         try {
             Message msg = new MimeMessage(session);
-
-            msg.setContent(body,"text/plain; charset=UTF-8");
             
             body = new String(body.getBytes(), "UTF-8");
             theme = new String(theme.getBytes(), "UTF-8");
@@ -43,7 +41,6 @@ public class MailSender {
             msg.setSubject(theme);
             msg.setSentDate(new Date());
             msg.setText(body);
-
             
             System.out.println(theme + " <----------------- maybe else");
 
